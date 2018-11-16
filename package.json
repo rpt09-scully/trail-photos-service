@@ -8,8 +8,14 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon server/index.js",
+    "seedData": "psql -f database-postgresql/schema.sql trailPhotosDB; node database-postgresql/seed.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "pg": "^7.6.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
