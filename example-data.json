@@ -1,0 +1,54 @@
+// GET /{trailId}/photos
+{
+  "data": [{
+    "type": "trail-photos",
+    "id": "1",
+    "attributes": {
+      "photo_url": "http://aws.amazon.com/983245iuhjkldfjkdf.png",
+      "trail_id": "5",
+      "user_id": "32",
+      "upload_date": 	"1997-12-17 07:37:16-08",
+      "caption": "Flowers in Golden Gate Park",
+      "is_hero_photo": "true"
+    }
+  },{
+    "type": "trail-photos",
+    "id": "2",
+    "attributes": {
+      "photo_url": "http://aws.amazon.com/sdfsdfwe23fdgr.png",
+      "trail_id": "5",
+      "user_id": "33",
+      "upload_date": 	"2017-12-17 07:37:16-08",
+      "caption": "Buffalo in Golden Gate Park",
+      "is_hero_photo": "false"
+    }
+  }]
+}
+
+// GET /{trailId}/photoCount
+{
+  "data": {
+    "type": "trail-photos-count", //is the type suppose to be the same?
+    "id": "1", //do I need to have an id for this?
+    "attributes": {
+      "trail_id": "5",
+      "count": "10"
+    }
+  }
+}
+
+// GET /{trailId}/heroPhoto
+{
+  "data": {
+    "type": "trail-photos",
+    "id": "3", //do I need to have an id for this?
+    "attributes": {
+      "photo_url": "http://aws.amazon.com/sdfsdfwe23fdgr.png",
+      "trail_id": "5",
+      "user_id": "33",
+      "upload_date": 	"2017-12-17 07:37:16-08",
+      "caption": "Buffalo in Golden Gate Park",
+      "is_hero_photo": "true"
+    }
+  }
+}
