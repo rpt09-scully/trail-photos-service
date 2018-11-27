@@ -25,3 +25,5 @@ coverage
 build/
 dist/
 
+#SECRETS
+.env

@@ -1,19 +1,11 @@
 // helper functions to seed data
-const { Client } = require('pg');
 const faker = require('faker');
 const request = require('request');
-const rawSeedData = require('./rawSeedData.js');
+const client = require('./connection.js');
+const fs = require('fs');
 
 // each trail id from 1 - 100 is represented in the trailPhotos database
 // not every user has a photo
-
-const client = new Client({
-  host: 'localhost',
-  database: 'trailPhotosDB',
-  port: 5432,
-})
-
-client.connect();
 
 // enter number of mock trails and maximum number of photos per trail below
 var numSampleTrails = 100;
@@ -36,18 +28,19 @@ var insertionFactory = (trailId, i) => {
     });
 
     requestPromise.then(value => {
-      var queryObject = {};
-      queryObject.trail_id = trailId;
-      queryObject.user_id = getRandomIntInclusive(1, 100);
-      queryObject.photo_url = value;
-      queryObject.upload_date = faker.date.past();
-      queryObject.caption = faker.lorem.words();
+      var queryObject = {
+        trail_id: trailId,
+        user_id: getRandomIntInclusive(1, 100),
+        photo_url: value,
+        upload_date: faker.date.past().toISOString(),
+        caption: faker.lorem.words()
+      }
       queryObject.is_hero_photo = i === 1 ? true : false;
       var {trail_id, user_id, photo_url, user_id, upload_date, caption, is_hero_photo} = queryObject;
-      var postgreSQLStatement = 'INSERT INTO trailPhotos(trail_id, user_id, upload_date, photo_url, caption, is_hero_photo) VALUES($1, $2, $3, $4, $5, $6)';
-      client.query(postgreSQLStatement, [trail_id, user_id, upload_date, photo_url, caption, is_hero_photo], (err, res) => { // async db table insertion
+      var postgreSQLStatement = `INSERT INTO trailPhotos(trail_id, user_id, upload_date, photo_url, caption, is_hero_photo) VALUES(${trail_id}, ${user_id}, '${upload_date}', '${photo_url}', '${caption}', ${is_hero_photo});\n`;
+      fs.appendFile('database-postgresql/schema.sql', postgreSQLStatement, err => {
         if(err) throw err;
-        console.log('...successfull insertion');
+        console.log('...successful insertion of photo_id into schema.sql');
         resolve();
       });
     });
@@ -62,7 +55,7 @@ async function iterateTrailIds(){
       await insertionFactory(i, j);
     }
   }
-  console.log('...mock data insertion complete');
+  console.log('...mock data insertion into schema.sql complete');
   client.end();
 }
 

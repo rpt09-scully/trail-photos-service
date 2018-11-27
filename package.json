@@ -9,9 +9,11 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "seedData": "psql -f database-postgresql/schema.sql trailPhotosDB; node database-postgresql/seed.js"
+    "loadData": "sed -i '' '16,$ d' database-postgresql/schema.sql",
+    "seedData": "npm run loadData; node database-postgresql/seed.js; psql trailPhotosDB < database-postgresql/schema.sql"
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "pg": "^7.6.1",
