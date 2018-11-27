@@ -1,4 +1,4 @@
-# Project Name
+# Service Name
 
 > Trail Photos Service
 
@@ -37,8 +37,8 @@ In terminal:
 + `Schema` in mysql vs `Schema` in PostgreSQL can mean different things
 
 ### Set Up Environemnt Variables
-+ Create a `.env` file to set up your variables: `cp .env-sample .env`
-+ Open the `.env` file and fill in the `HOST`, `DATABASE`, `DBPORT` (database server port) and `PORT` (web server port) fields
+1. Create a `.env` file to set up your variables: `cp .env-sample .env`
+2. Open the `.env` file and fill in the `HOST`, `DATABASE`, `DBPORT` (database server port) and `PORT` (web server port) fields
 
 ### Load Generated Data Into PostgreSQL Database
 + In terminal, `npm run loadData`
@@ -50,11 +50,8 @@ var numSampleTrails = <i>numberOfSampleTrailsHere-defaultIs100</i>;
 var maxNumPhotosPerTrail = <i>numberOfMaxPhotosPerTrail-defaultIs5</i>;
 </pre>
 
-### Install Packages
-+ To install all required packages: `npm install`
-
 ### Start Server
-+ To run web server, webpack watch and index.html: `npm start`
++ To run web server, webpack watch and open index.html: `npm start`
 
 ## Requirements
 
@@ -70,7 +67,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
