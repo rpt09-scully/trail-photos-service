@@ -2,7 +2,7 @@
 const client = require('./connection.js');
 
 const getPhotos = (trailId, sortOrder, callback) => {
-  var sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
+  let sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
 
   let getPhotosPSQLStatement = `SELECT * FROM trailphotos WHERE trail_id = $1` + sortOrderStatement;
 
@@ -40,7 +40,7 @@ const getPhotosCount = (trailId, callback) => {
 };
 
 const getHeroPhoto = (trailId, callback) => {
-  var getHeroPhotoPSQLStatement = `SELECT * FROM trailphotos WHERE trail_id = $1 AND is_hero_photo = true`;
+  let getHeroPhotoPSQLStatement = `SELECT * FROM trailphotos WHERE trail_id = $1 AND is_hero_photo = true`;
   client.query(getHeroPhotoPSQLStatement, [trailId], (err, res) => {
     if(err) throw err;
     let {photo_id, photo_url, trail_id, user_id, upload_date, caption, is_hero_photo} = res.rows[0];

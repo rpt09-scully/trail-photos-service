@@ -54,7 +54,7 @@ var maxNumPhotosPerTrail = <i>numberOfMaxPhotosPerTrail-defaultIs5</i>;
 + To install all required packages: `npm install`
 
 ### Start Server
-+ To start web server: `npm start`
++ To run web server, webpack watch and index.html: `npm start`
 
 ## Requirements
 
