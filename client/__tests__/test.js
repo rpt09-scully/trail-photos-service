@@ -10,10 +10,17 @@ afterEach(() => {
   dbTeardown();
 });
 
-const verify100PlusDbEntries = () => {
-  var countUniqueTrailIdsPSQLStatement =
+const verify100PlusDbEntries = (callback) => {
+  var countUniqueTrailIdsPSQLStatement = `SELECT COUNT (DISTINCT trail_id) from trailphotos`;
+  client.query(countUniqueTrailIdsPSQLStatement, (err, res) => {
+    if(err) throw err;
+    callback(Number(res.rows[0].count));
+  });
 }
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+test('PostgreSQL database represents over 100 trail ids', done => {
+  verify100PlusDbEntries(result => {
+    expect(result).toBeGreaterThanOrEqual(100);
+    done();
+  });
 });
