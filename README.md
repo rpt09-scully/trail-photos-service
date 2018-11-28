@@ -28,7 +28,7 @@ In terminal:
 + To enter PostgreSQL cli (db name is `trailPhotosDB`): <pre>psql <i>dbNameHere</i></pre>
 + To view all current psql databases in terminal: `psql -l`
 + To view all tables in PostgreSQL cli: `\dt`
-+ To describe table in PostgreSQL cli:
++ To describe table in PostgreSQL cli (table name is `trailphotos`):
 <pre>
 \d+ <i>tableNameHere</i>
 </pre>

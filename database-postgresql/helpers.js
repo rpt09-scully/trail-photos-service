@@ -1,5 +1,5 @@
 
-const client = require('./connection.js');
+const client = require('./connection');
 
 const getPhotos = (trailId, sortOrder, callback) => {
   let sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';

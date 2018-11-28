@@ -1,7 +1,7 @@
 // helper functions to seed data
 const faker = require('faker');
 const request = require('request');
-const client = require('./connection.js');
+const client = require('./connection');
 const fs = require('fs');
 
 // each trail id from 1 - 100 is represented in the trailPhotos database

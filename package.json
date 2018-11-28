@@ -1,9 +1,9 @@
 {
   "name": "trail-photos",
   "version": "",
-  "description": "",
+  "description": "gimmeTrailIdIGivethYouPhotoz",
   "author": "Meng Sung",
-  "license": "",
+  "license": "gimmeAllzDaRoyaltiez",
   "engines": {
     "node": ">=6.13.0"
   },
@@ -12,6 +12,7 @@
     "react-dev": "webpack -d --watch",
     "startWeb": "nodemon server/index.js",
     "openPage": "open http://localhost:3003",
+    "test": "jest",
     "loadData": "sed -i '' '16,$ d' database-postgresql/schema.sql",
     "seedData": "npm run loadData; node database-postgresql/seed.js; psql trailPhotosDB < database-postgresql/schema.sql"
   },
@@ -30,6 +31,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^23.6.0",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   }

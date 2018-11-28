@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config()
 const port = process.env.PORT;
-const db = require('../database-postgresql/helpers.js');
+const db = require('../database-postgresql/helpers');
 
 app.use(express.static('public'));
 
