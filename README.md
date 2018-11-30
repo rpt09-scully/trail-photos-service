@@ -36,7 +36,7 @@ In terminal:
 + To exit out of PostgreSQL cli: `\q`
 + `Schema` in mysql vs `Schema` in PostgreSQL can mean different things
 
-### Set Up Environemnt Variables
+### Set Up Environment Variables
 1. Create a `.env` file to set up your variables: `cp .env-sample .env`
 2. Open the `.env` file and fill in the `HOST`, `DATABASE`, `DBPORT` (database server port) and `PORT` (web server port) fields
 
@@ -52,6 +52,10 @@ var maxNumPhotosPerTrail = <i>numberOfMaxPhotosPerTrail-defaultIs5</i>;
 
 ### Start Server
 + To run web server, webpack watch and open index.html: `npm start`
+
+### Run Tests
++ To run all tests: `npm test`
++ [Advanced Only] To update test snapshots: `npm testUpdate`
 
 ## Requirements
 

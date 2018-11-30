@@ -1,5 +1,5 @@
-
 const client = require('./connection');
+
 
 const getPhotos = (trailId, sortOrder, callback) => {
   let sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
@@ -30,8 +30,8 @@ const getPhotosCount = (trailId, callback) => {
       data: {
         type: 'trail-photos-count',
         attributes: {
-          trail_id: trailId,
-          count: res.rows[0].count
+          trail_id: Number(trailId),
+          count: Number(res.rows[0].count)
         }
       }
     }
