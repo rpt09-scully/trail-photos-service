@@ -20,7 +20,7 @@
 ### Install PostgreSQL and Create TrailPhotosDB Database
 
 In terminal:
-1. Install PostgreSQL:`brew install postgresql`
+1. Install PostgreSQL:`brew install postgresql` (this example uses PostgreSQL version 10.5)
 2. Start PostgresSQL:`brew services start postgresql`
 3. Create `trailPhotosDB`: `createdb trailPhotosDB`
 
@@ -38,7 +38,7 @@ In terminal:
 
 ### Set Up Environment Variables
 1. Create a `.env` file to set up your variables: `cp .env-sample .env`
-2. Open the `.env` file and fill in the `HOST`, `DATABASE`, `DBPORT` (database server port) and `PORT` (web server port) fields
+2. Open the `.env` file and fill in the `HOST`, `DATABASE` and `DBPORT` (database server port) fields
 
 ### Load Generated Data Into PostgreSQL Database
 + In terminal, `npm run loadData`
@@ -56,6 +56,12 @@ var maxNumPhotosPerTrail = <i>numberOfMaxPhotosPerTrail-defaultIs5</i>;
 ### Run Tests
 + To run all tests: `npm test`
 + [Advanced Only] To update test snapshots: `npm testUpdate`
+#### Of Note:
++ I learned that to `unmock` a manually mocked module, you must accompany `jest.unmock()` with `require.requireActual()`.  See below for an example  (`actual module path` should be `../database-postgresql/connection`)
+<pre>
+jest.unmock('<i>insertActualModulePath</i>');
+let client = require.requireActual('<i>insertActualModulePath</i>');
+</pre>
 
 ## Requirements
 

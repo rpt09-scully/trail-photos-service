@@ -16,10 +16,10 @@
     "react-dev": "webpack -d --watch",
     "startWeb": "nodemon server/index.js",
     "openPage": "open http://localhost:3003",
-    "test": "jest",
+    "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
-    "seedData": "sed -i '' '16,$ d'; node database-postgresql/seed.js; npm run loadData"
+    "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData"
   },
   "dependencies": {
     "dotenv": "^6.1.0",

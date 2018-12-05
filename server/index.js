@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-require('dotenv').config()
-const port = process.env.PORT;
+require('dotenv').config();
+const port = process.env.PORT || 3003;
 
 
-const trailPhotos = require('./trailPhotos')
+const trailPhotos = require('./trailPhotos');
 
 app.use(express.static('public'));
 

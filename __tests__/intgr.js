@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../server/index');
+const app = require('../server/index');
 const schema = require('./helpers/schemaValidation');
 
 
@@ -8,7 +8,7 @@ describe('API TESTING', () => {
     test('JSON Object Returned', (done) => {
       request(app)
         .get('/3/photos')
-        .expect('Content-Type', /json/, done)
+        .expect('Content-Type', /json/, done);
     });
 
     test('\'200\' Status Returned', (done) => {
@@ -31,7 +31,7 @@ describe('API TESTING', () => {
     test('JSON Object Returned', (done) => {
       request(app)
         .get('/3/heroPhoto')
-        .expect('Content-Type', /json/, done)
+        .expect('Content-Type', /json/, done);
     });
 
     test('\'200\' Status Returned', (done) => {
@@ -54,7 +54,7 @@ describe('API TESTING', () => {
     test('JSON Object Returned', (done) => {
       request(app)
         .get('/3/photosCount')
-        .expect('Content-Type', /json/, done)
+        .expect('Content-Type', /json/, done);
     });
 
     test('\'200\' Status Returned', (done) => {

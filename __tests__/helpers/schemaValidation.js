@@ -5,92 +5,92 @@ var photosAttributesSchema = {
   type: 'object',
   additionalProperties: false,
   maxProperties: 6,
-  required: ["photo_url", "trail_id", "user_id", "upload_date", "caption", "is_hero_photo"],
-  "properties" : {
-    "photo_url": {"type":"string"},
-    "trail_id": {"type":"number"},
-    "user_id": {"type":"number"},
-    "upload_date": 	{"type":"string"},
-    "caption": {"type":"string"},
-    "is_hero_photo": {"type":"boolean"}
+  required: ['photo_url', 'trail_id', 'user_id', 'upload_date', 'caption', 'is_hero_photo'],
+  'properties': {
+    'photo_url': {'type': 'string'},
+    'trail_id': {'type': 'string'},
+    'user_id': {'type': 'string'},
+    'upload_date': {'type': 'string'},
+    'caption': {'type': 'string'},
+    'is_hero_photo': {'type': 'boolean'}
   }
-}
+};
 
 var photosInnerSchema = {
-  "type" : "object",
+  'type': 'object',
   additionalProperties: false,
-  required: ["attributes", "type", "id"],
+  required: ['attributes', 'type', 'id'],
   maxProperties: 3,
-  "properties" : {
-      "attributes" :  photosAttributesSchema,
-      "type": {"type" : "string"},
-      "id": {"type": "number"}
+  'properties': {
+    'attributes': photosAttributesSchema,
+    'type': {'type': 'string'},
+    'id': {'type': 'string'}
   }
-}
+};
 
 const photosInnerArraySchema = {
-  type: "array",
+  type: 'array',
   additionalProperties: false,
   items: photosInnerSchema
-}
+};
 
 const photosSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ["data"],
+  required: ['data'],
   maxProperties: 1,
-  properties: { "data": photosInnerArraySchema }
+  properties: { 'data': photosInnerArraySchema }
 };
 
 const heroPhotosSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ["data"],
+  required: ['data'],
   maxProperties: 1,
-  properties: { "data": photosInnerSchema }
-}
+  properties: { 'data': photosInnerSchema }
+};
 
 var photosCountAttributesSchema = {
   type: 'object',
   additionalProperties: false,
   maxProperties: 6,
-  required: ["trail_id", "count"],
-  "properties" : {
-    "trail_id": {"type":"number"},
-    "count": {"type":"number"},
+  required: ['trail_id', 'count'],
+  'properties': {
+    'trail_id': {'type': 'string'},
+    'count': {'type': 'string'},
   }
-}
+};
 
 
 var photosCountInnerSchema = {
-  "type" : "object",
+  'type': 'object',
   additionalProperties: false,
-  required: ["attributes", "type"],
+  required: ['attributes', 'type'],
   maxProperties: 2,
-  "properties" : {
-      "attributes" :  photosCountAttributesSchema,
-      "type": {"type" : "string"}
+  'properties': {
+    'attributes': photosCountAttributesSchema,
+    'type': {'type': 'string'}
   }
-}
+};
 
 const photosCountSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ["data"],
+  required: ['data'],
   maxProperties: 1,
-  properties: { "data": photosCountInnerSchema }
-}
+  properties: { 'data': photosCountInnerSchema }
+};
 
 var schemaValidation = (schema, obj) => {
   const test = ajv.compile(schema);
   const isValid = test(obj);
 
-  if(!isValid){
+  if (!isValid) {
     return { obj, error: test.errors };
   } else {
     return true;
   }
-}
+};
 
 
 /*** Test Objects ***/
@@ -134,5 +134,5 @@ module.exports = {
   photosSchema,
   heroPhotosSchema,
   photosCountSchema
-}
+};
 
