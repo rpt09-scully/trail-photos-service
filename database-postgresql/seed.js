@@ -40,7 +40,7 @@ var insertionFactory = (trailId, i) => {
       var postgreSQLStatement = `INSERT INTO trailPhotos(trail_id, user_id, upload_date, photo_url, caption, is_hero_photo) VALUES(${trail_id}, ${user_id}, '${upload_date}', '${photo_url}', '${caption}', ${is_hero_photo});\n`;
       fs.appendFile('database-postgresql/schema.sql', postgreSQLStatement, err => {
         if (err) { throw err; }
-        console.log('...successful insertion of photo_id into schema.sql');
+        console.log(`...successful insertion of photo_id for trail_id ${trail_id} into schema.sql`);
         resolve();
       });
     });

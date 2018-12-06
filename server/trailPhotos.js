@@ -4,9 +4,14 @@ const db = require('../database-postgresql/helpers');
 
 router.get('/photos', (req, res) => {
   var sortOrder = req.query.sort || null;
-  db.getPhotos(req.params.trailId, sortOrder, result => {
-    res.status(200).send(result);
-  });
+  var validSortOrder = ['asc', 'desc', null];
+  if (!validSortOrder.includes(sortOrder)) {
+    res.status(400).end('Invalid sort order');
+  } else {
+    db.getPhotos(req.params.trailId, sortOrder, result => {
+      res.status(200).send(result);
+    });
+  }
 });
 
 router.get('/photosCount', (req, res) => {
