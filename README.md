@@ -14,17 +14,34 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
+1. [Additional Resources](#additional-resources)
 
 ## Usage
+### API Endpoints
++ GET `/:trailId/photos?sortBy={asc|desc}`
+  - Given a trailId, retrieves photos affiliated with the respective trailId
++ GET `/:trailId/photoCount`
+  - Given a trailId, retrieves total count of photos affiliated with the respective trailId
++ GET `/:trailId/heroPhoto`
+  - Given a trailId, retrieves hero photo affiliated with respective the trailId
 
-### Install PostgreSQL and Create TrailPhotosDB Database
+####Of Note:
++ All data returns in .json format.
++ .json shape loosely follows the [{json:api} standard](https://jsonapi.org/)
++ Reference exact shapes of returned data [here](example-data/).
+
+GET /paths
+retrieves all paths in database (shouldn't really be used except for testing)
+### Setting Up
+
+#### Install PostgreSQL and Create TrailPhotosDB Database
 
 In terminal:
-1. Install PostgreSQL:`brew install postgresql`
+1. Install PostgreSQL:`brew install postgresql` (this example uses PostgreSQL version 10.5)
 2. Start PostgresSQL:`brew services start postgresql`
 3. Create `trailPhotosDB`: `createdb trailPhotosDB`
 
-#### Of Note:
+##### Of Note:
 + To enter PostgreSQL cli (db name is `trailPhotosDB`): <pre>psql <i>dbNameHere</i></pre>
 + To view all current psql databases in terminal: `psql -l`
 + To view all tables in PostgreSQL cli: `\dt`
@@ -36,22 +53,32 @@ In terminal:
 + To exit out of PostgreSQL cli: `\q`
 + `Schema` in mysql vs `Schema` in PostgreSQL can mean different things
 
-### Set Up Environemnt Variables
+#### Set Up Environment Variables
 1. Create a `.env` file to set up your variables: `cp .env-sample .env`
-2. Open the `.env` file and fill in the `HOST`, `DATABASE`, `DBPORT` (database server port) and `PORT` (web server port) fields
+2. Open the `.env` file and fill in the `HOST`, `DATABASE` and `DBPORT` (database server port) fields
 
-### Load Generated Data Into PostgreSQL Database
+#### Load Generated Data Into PostgreSQL Database
 + In terminal, `npm run loadData`
 
-### Generate New Data Into PostgreSQL Database
+#### Generate New Data Into PostgreSQL Database
 + [Optional] In database-postgresql/seed.js, modify the following on lines `11` and `12`:
 <pre>
 var numSampleTrails = <i>numberOfSampleTrailsHere-defaultIs100</i>;
 var maxNumPhotosPerTrail = <i>numberOfMaxPhotosPerTrail-defaultIs5</i>;
 </pre>
 
-### Start Server
+#### Start Server
 + To run web server, webpack watch and open index.html: `npm start`
+
+#### Run Tests
++ To run all tests: `npm test`
++ [Advanced Only] To update test snapshots: `npm testUpdate`
+##### Of Note:
++ I learned that to `unmock` a manually mocked module, you must accompany `jest.unmock()` with `require.requireActual()`.  See below for an example  (`actual module path` should be `../database-postgresql/connection`)
+<pre>
+jest.unmock('<i>insertActualModulePath</i>');
+let client = require.requireActual('<i>insertActualModulePath</i>');
+</pre>
 
 ## Requirements
 
