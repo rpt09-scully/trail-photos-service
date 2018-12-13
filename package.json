@@ -6,15 +6,17 @@
   "license": "gimmeAllzDaRoyaltiez",
   "jest": {
     "setupTestFrameworkScriptFile": "jest-extended",
-    "modulePathIgnorePatterns": ["helpers"]
+    "modulePathIgnorePatterns": [
+      "helpers"
+    ]
   },
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js & npm run react-dev | npm run openPage",
+    "start": "nodemon server/index.js | npm run openPage",
     "react-dev": "webpack -d --watch",
-    "startWeb": "nodemon server/index.js",
+    "start-dev": "nodemon server/index.js & npm run react-dev | npm run openPage",
     "openPage": "open http://localhost:3003",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
@@ -22,6 +24,7 @@
     "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
@@ -36,10 +39,14 @@
     "@babel/preset-react": "^7.0.0",
     "ajv": "^6.5.5",
     "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^23.6.0",
     "jest-extended": "^0.11.0",
     "nodemon": "^1.18.7",
+    "requestretry": "^3.1.0",
+    "static-site-generator-webpack-plugin": "^3.4.2",
+    "style-loader": "^0.23.1",
     "supertest": "^3.3.0",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
