@@ -9,7 +9,7 @@ router.get('/photos', (req, res) => {
     res.status(400).end('Invalid sort order');
   } else {
     db.getPhotos(req.params.trailId, sortOrder, result => {
-      res.status(200).send(result);
+      res.send(result);
     });
   }
 });

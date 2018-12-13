@@ -32,7 +32,7 @@ var insertionFactory = (trailId, trailIdPhotoNum) => {
         if (err) {
           throw err;
         }
-        setTimeout(() => resolve(res.request.uri.href), 2800);
+        setTimeout(() => resolve(res.request.uri.href), 2800); // necessary timeout for unsplash.com to avoid identical consecutive photos
       });
     });
 
