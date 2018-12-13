@@ -27,7 +27,7 @@ var insertionFactory = (trailId, trailIdPhotoNum) => {
         url: 'https://source.unsplash.com/700x520/?nature,hiking',
         maxAttempts: 5,
         retryDelay: 5000
-      }
+      };
       request(options, (err, res) => {
         if (err) {
           throw err;
