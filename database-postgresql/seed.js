@@ -1,6 +1,7 @@
 // helper functions to seed data
 const faker = require('faker');
-const request = require('request');
+// const request = require('request');
+const request = require('requestretry');
 const client = require('./connection');
 const fs = require('fs');
 
@@ -9,7 +10,8 @@ const fs = require('fs');
 
 // enter number of mock trails and maximum number of photos per trail below
 var numSampleTrails = 100;
-var maxNumPhotosPerTrail = 5;
+var maxNumPhotosPerTrail = 50;
+var minNumPhotosPerTrail = 30;
 
 
 // helper functions
@@ -17,13 +19,20 @@ var getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-var insertionFactory = (trailId, i) => {
+var insertionFactory = (trailId, trailIdPhotoNum) => {
   return new Promise ((resolve, reject) => {
 
     var requestPromise = new Promise((resolve, reject) => { // async process that grabs random nature photo
-      request('https://loremflickr.com/700/520/nature', (err, res) => {
-        if (err) { throw err; }
-        resolve(res.request.uri.href);
+      let options = {
+        url: 'https://source.unsplash.com/700x520/?nature,hiking',
+        maxAttempts: 5,
+        retryDelay: 5000
+      };
+      request(options, (err, res) => {
+        if (err) {
+          throw err;
+        }
+        setTimeout(() => resolve(res.request.uri.href), 2800); // necessary timeout for unsplash.com to avoid identical consecutive photos
       });
     });
 
@@ -35,7 +44,7 @@ var insertionFactory = (trailId, i) => {
         upload_date: faker.date.past().toISOString(),
         caption: faker.lorem.words()
       };
-      queryObject.is_hero_photo = i === 1 ? true : false;
+      queryObject.is_hero_photo = trailIdPhotoNum === 1 ? true : false;
       var {trail_id, user_id, photo_url, user_id, upload_date, caption, is_hero_photo} = queryObject;
       var postgreSQLStatement = `INSERT INTO trailPhotos(trail_id, user_id, upload_date, photo_url, caption, is_hero_photo) VALUES(${trail_id}, ${user_id}, '${upload_date}', '${photo_url}', '${caption}', ${is_hero_photo});\n`;
       fs.appendFile('database-postgresql/schema.sql', postgreSQLStatement, err => {
@@ -49,10 +58,10 @@ var insertionFactory = (trailId, i) => {
 
 let iterateTrailIds = async () => {
   for (var i = 1; i <= numSampleTrails; i++) {
-    var random = getRandomIntInclusive(1, maxNumPhotosPerTrail);
+    var random = getRandomIntInclusive(minNumPhotosPerTrail, maxNumPhotosPerTrail);
     console.log('inserting photos for trailid', i);
-    for (var j = 1; j <= random; j++) {
-      await insertionFactory(i, j);
+    for (var trailIdPhotoNum = 1; trailIdPhotoNum <= random; trailIdPhotoNum++) {
+      await insertionFactory(i, trailIdPhotoNum);
     }
   }
   console.log('...mock data insertion into schema.sql complete');

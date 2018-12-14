@@ -1,0 +1,12 @@
+.container {
+  /* border-style: solid;
+  border-color: orange; */
+  display: flex;
+
+}
+.image {
+  width: 80px;
+  height: 80px;
+  padding: 2.5px;
+}
+
