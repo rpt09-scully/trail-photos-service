@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx'
@@ -8,13 +8,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrailId: 1,
+      currentTrailId: 2,
       photos: []
     }
   }
   componentDidMount() {
+  // let config = {
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //     "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  //   }
+  // };
 
-  axios.get(`/${this.state.currentTrailId}/photos`)
+  axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
     .then((response) => {
       let photoData = response.data.data;
       this.setState({photos: photoData});
@@ -47,7 +53,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
 
 window.NT = window.NT || {};
-window.NT.TrailPhotosService = App;
+window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
+window.NT.TrailPhotosService.App = App;
