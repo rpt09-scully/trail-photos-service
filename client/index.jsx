@@ -8,18 +8,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrailId: 2,
+      currentTrailId: 1,
       photos: []
     }
   }
   componentDidMount() {
-  // let config = {
-  //   headers: {
-  //     "Access-Control-Allow-Origin": "*",
-  //     "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-  //   }
-  // };
-
   axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
     .then((response) => {
       let photoData = response.data.data;
