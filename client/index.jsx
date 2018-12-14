@@ -17,7 +17,6 @@ class App extends React.Component {
   axios.get(`/${this.state.currentTrailId}/photos`)
     .then((response) => {
       let photoData = response.data.data;
-      console.log(photoData);
       this.setState({photos: photoData});
     })
     .catch(function (error) {
@@ -49,3 +48,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+window.NT = window.NT || {};
+window.NT.TrailPhotosService = App;
