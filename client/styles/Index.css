@@ -19,13 +19,6 @@ h2 {
   font-weight: normal;
 }
 
-.rprbarcontainer {
-  background-color: #d4d4d4;
-  display: flex;
-  flex-direction: row;
-
-}
-
 .rprbaritem{
   justify-content: space-evenly;
 }
