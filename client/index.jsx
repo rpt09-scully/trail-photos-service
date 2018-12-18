@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
+    axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
       .then((response) => {
         let photoData = response.data.data;
         this.setState({photos: photoData});
@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 }
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
 
 window.NT = window.NT || {};
 window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
