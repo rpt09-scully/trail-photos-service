@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 8081;
 
 
 const trailPhotos = require('./trailPhotos');
