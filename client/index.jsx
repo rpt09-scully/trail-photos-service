@@ -43,8 +43,9 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
 window.NT = window.NT || {};
 window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
 window.NT.TrailPhotosService.App = App;
+
+// ReactDOM.render(<App />, document.getElementById('9Trails.TrailPhotosService.App'));
+
