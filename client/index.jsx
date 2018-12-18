@@ -3,15 +3,19 @@ import React from 'react';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
+import getTrailIdURL from './services/utilities';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrailId: 1,
+      currentTrailId: getTrailIdURL(),
       photos: []
     };
   }
+
+
+
   componentDidMount() {
     axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
       .then((response) => {
