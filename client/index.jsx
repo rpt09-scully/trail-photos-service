@@ -14,8 +14,6 @@ class App extends React.Component {
     };
   }
 
-
-
   componentDidMount() {
     axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
       .then((response) => {
