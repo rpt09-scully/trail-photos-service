@@ -3,12 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
-
-let getTrailIdURL = () => {
-  let urlId = window.location.pathname.slice(1);
-  (urlId.length === 0) && (urlId = 1);
-  return urlId;
-};
+import getTrailIdURL from './services/utilities';
 
 class App extends React.Component {
   constructor(props) {
