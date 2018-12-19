@@ -1,5 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
@@ -16,6 +16,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
+    // axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
       .then((response) => {
         let photoData = response.data.data;
         this.setState({photos: photoData});
@@ -43,8 +44,8 @@ class App extends React.Component {
   }
 }
 
-// ReactDOM.render(<App />, document.getElementById('9Trails.TrailPhotosService.App'));
+ReactDOM.render(<App />, document.getElementById('9Trails.TrailPhotosService.App'));
 
-window.NT = window.NT || {};
-window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
-window.NT.TrailPhotosService.App = App;
+// window.NT = window.NT || {};
+// window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
+// window.NT.TrailPhotosService.App = App;
