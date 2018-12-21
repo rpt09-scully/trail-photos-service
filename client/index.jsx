@@ -22,7 +22,7 @@ class App extends React.Component {
       {
         trails: '',
         profile: '',
-        photos: 'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/',
+        photos: 'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com',
         reviews: '',
         paths: ''
       };
