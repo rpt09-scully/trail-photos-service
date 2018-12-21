@@ -17,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     let SERVICE_HOSTS = {};
 
-    if (process.env.NODE_ENV === 'production') {
+    // if (process.env.NODE_ENV === 'production') {
       SERVICE_HOSTS = {
         trails: '',
         profile: '',
@@ -25,15 +25,15 @@ class App extends React.Component {
         reviews: '',
         paths: ''
       };
-    } else {
-      SERVICE_HOSTS = {
-        trails: 'http://localhost:3001',
-        profile: 'http://localhost:3002',
-        photos: 'http://localhost:3003',
-        reviews: 'http://localhost:3004',
-        paths: 'http://localhost:3005'
-      };
-    }
+    // } else {
+    //   SERVICE_HOSTS = {
+    //     trails: 'http://localhost:3001',
+    //     profile: 'http://localhost:3002',
+    //     photos: 'http://localhost:3003',
+    //     reviews: 'http://localhost:3004',
+    //     paths: 'http://localhost:3005'
+    //   };
+    // }
     console.log('hi', process.env);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
     // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
