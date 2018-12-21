@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(process.env);
+    console.log('hi', process.env);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
     // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
     axios.get(photosEndpoint)
