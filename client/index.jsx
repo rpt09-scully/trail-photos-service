@@ -5,8 +5,6 @@ import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
 import getTrailIdURL from './services/utilities';
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
