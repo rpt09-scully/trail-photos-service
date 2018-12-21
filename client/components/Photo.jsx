@@ -3,9 +3,9 @@ import styles from '../styles/Photo.css';
 import $ from 'jquery';
 
 const Photo = (props) => {
-  function handlePhotoClick(e){
+  function handlePhotoClick(e) {
     console.log(e.target);
-    $("popuptext").css("display", "block");
+    $('popuptext').css('display', 'block');
   }
 
   return (

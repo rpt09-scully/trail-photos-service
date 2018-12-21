@@ -5,25 +5,7 @@ import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
 import getTrailIdURL from './services/utilities';
 
-let SERVICE_HOSTS = {};
 
-if(process.env.NODE_ENV === 'production'){
-  SERVICE_HOSTS = {
-    trails:'',
-    profile:'',
-    photos:'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com',
-    reviews:'',
-    paths:''
-  }
-} else {
-  SERVICE_HOSTS = {
-    trails:'http://localhost:3001',
-    profile:'http://localhost:3002',
-    photos:'http://localhost:3003',
-    reviews:'http://localhost:3004',
-    paths:'http://localhost:3005'
-  }
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +17,25 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    let SERVICE_HOSTS = {};
+
+    if (process.env.NODE_ENV === 'production') {
+      SERVICE_HOSTS = {
+        trails: '',
+        profile: '',
+        photos: 'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com',
+        reviews: '',
+        paths: ''
+      };
+    } else {
+      SERVICE_HOSTS = {
+        trails: 'http://localhost:3001',
+        profile: 'http://localhost:3002',
+        photos: 'http://localhost:3003',
+        reviews: 'http://localhost:3004',
+        paths: 'http://localhost:3005'
+      };
+    }
     console.log('hi', process.env);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
     // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
