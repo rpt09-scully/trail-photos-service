@@ -35,8 +35,8 @@ class App extends React.Component {
       //   paths: 'http://localhost:3005'
       // };
     // }
-    console.log("endpoint", photosEndpoint);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
+    console.log("endpoint", photosEndpoint);
     // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
     axios.get(photosEndpoint)
       .then((response) => {
