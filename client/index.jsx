@@ -16,7 +16,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let SERVICE_HOSTS = {};
-
+    console.log('PROCESS', process.env);
     // if (process.env.NODE_ENV === 'production') {
       SERVICE_HOSTS = {
         trails: '',
@@ -34,7 +34,6 @@ class App extends React.Component {
     //     paths: 'http://localhost:3005'
     //   };
     // }
-    console.log('hi', process.env);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
     // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
     axios.get(photosEndpoint)

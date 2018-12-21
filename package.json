@@ -14,10 +14,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "webpack --mode=production && nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon server/index.js & npm run react-dev | npm run openPage",
-    "openPage": "open http://localhost:3003",
+    "start-dev": "nodemon server/index.js && npm run react-dev",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
