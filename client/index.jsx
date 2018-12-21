@@ -11,7 +11,7 @@ if(process.env.NODE_ENV === 'production'){
   SERVICE_HOSTS = {
     trails:'',
     profile:'',
-    photos:'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/',
+    photos:'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com',
     reviews:'',
     paths:''
   }
