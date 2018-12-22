@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
@@ -16,8 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let SERVICE_HOSTS = {};
-    console.log('PROCESS', process.env.NODE_ENV);
-    // if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production') {
       SERVICE_HOSTS =
       {
         trails: '',
@@ -26,18 +24,18 @@ class App extends React.Component {
         reviews: '',
         paths: ''
       };
-    // } else {
-      // SERVICE_HOSTS = {
-      //   trails: 'http://localhost:3001',
-      //   profile: 'http://localhost:3002',
-      //   photos: 'http://localhost:3003',
-      //   reviews: 'http://localhost:3004',
-      //   paths: 'http://localhost:3005'
-      // };
-    // }
+    } else {
+      SERVICE_HOSTS = {
+        trails: 'http://localhost:3001',
+        profile: 'http://localhost:3002',
+        photos: 'http://localhost:3003',
+        reviews: 'http://localhost:3004',
+        paths: 'http://localhost:3005'
+      };
+    }
+    console.log("PROCESS.ENV", process.env.NODE_ENV);
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
-    console.log("endpoint", photosEndpoint);
-    // axios.get(`http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com/${this.state.currentTrailId}/photos`)
+    console.log("Target EndPoint:", photosEndpoint);
     axios.get(photosEndpoint)
       .then((response) => {
         let photoData = response.data.data;
@@ -65,8 +63,6 @@ class App extends React.Component {
     );
   }
 }
-
-// ReactDOM.render(<App />, document.getElementById('9Trails.TrailPhotosService.App'));
 
 window.NT = window.NT || {};
 window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
