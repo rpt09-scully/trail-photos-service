@@ -48,7 +48,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className = {styles.container}>
+
+      <div className = 'servicePlaceholder'>
+      {/* <div className = {styles.container}> */}
         <h2>
           Share your experience to help other people learn about this trail:
         </h2>
