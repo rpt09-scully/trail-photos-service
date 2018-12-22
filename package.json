@@ -14,7 +14,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build-deploy": "webpack -p --define process.env.NODE_ENV=production && eb deploy",
+    "build-deploy": "webpack -p && eb deploy",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/index.js & npm run react-dev",
