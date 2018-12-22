@@ -14,7 +14,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build-deploy": "webpack && eb deploy",
+    "build-deploy": "webpack -p && eb deploy",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/index.js & npm run react-dev",
@@ -48,7 +48,7 @@
     "requestretry": "^3.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^3.3.0",
-    "webpack": "^4.28.1",
+    "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2"
   }
 }

@@ -33,7 +33,8 @@ class App extends React.Component {
         paths: 'http://localhost:3005'
       };
     }
-    console.log("PROCESS.ENV", process.env.NODE_ENV);
+    console.log("PROCESS.ENV", process.env)
+
     let photosEndpoint = SERVICE_HOSTS.photos + `/${this.state.currentTrailId}/photos`;
     console.log("Target EndPoint:", photosEndpoint);
     axios.get(photosEndpoint)
