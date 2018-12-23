@@ -12,3 +12,11 @@
   padding: 2.5px;
 }
 
+.popuptext {
+  display: none
+}
+
+.origImage {
+  width: 100%;
+  height: 100%;
+}

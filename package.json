@@ -14,10 +14,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "build-deploy": "git add . && git commit && webpack -p && eb deploy",
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon server/index.js & npm run react-dev | npm run openPage",
-    "openPage": "open http://localhost:3003",
+    "start-dev": "nodemon server/index.js & npm run react-dev",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
@@ -28,6 +28,7 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "jquery": "^3.3.1",
     "pg": "^7.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -43,11 +44,11 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^23.6.0",
     "jest-extended": "^0.11.0",
-    "nodemon": "^1.18.7",
+    "nodemon": "^1.18.9",
     "requestretry": "^3.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^3.3.0",
-    "webpack": "^4.26.1",
+    "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2"
   }
 }

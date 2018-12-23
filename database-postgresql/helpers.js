@@ -7,6 +7,7 @@ const getPhotos = (trailId, sortOrder, callback) => {
   const getPhotosPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1' + sortOrderStatement;
 
   client.query(getPhotosPSQLStatement, [trailId], (err, res) => {
+
     if (err) { throw err; }
     let result = {
       data: res.rows.map(item => {

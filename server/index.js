@@ -16,6 +16,6 @@ app.use(express.static('public'));
 
 app.use('/:trailId', trailPhotos);
 
-app.listen(port, () => console.log(`trail-photos app listenting on port ${port}`));
+app.listen(port, () => console.log(`trail-photos app listening on port ${port}`));
 
 module.exports = app;
