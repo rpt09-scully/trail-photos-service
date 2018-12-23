@@ -28,6 +28,6 @@ let detectEnvironment = () => {
     };
   }
   return SERVICE_HOSTS;
-}
+};
 
 export {getTrailIdURL, detectEnvironment};
