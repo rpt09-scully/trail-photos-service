@@ -1,21 +1,22 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
-import getTrailIdURL from './services/utilities';
+import { getTrailIdURL, detectEnvironment } from './services/utilities';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentTrailId: getTrailIdURL(),
+      environment: detectEnvironment(),
       photos: []
     };
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3003/${this.state.currentTrailId}/photos`)
+    let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`;
+    axios.get(photosEndpoint)
       .then((response) => {
         let photoData = response.data.data;
         this.setState({photos: photoData});
@@ -42,8 +43,6 @@ class App extends React.Component {
     );
   }
 }
-
-// ReactDOM.render(<App />, document.getElementById('app'));
 
 window.NT = window.NT || {};
 window.NT.TrailPhotosService = window.NT.TrailPhotosService || {};
