@@ -17,7 +17,7 @@
     "build-deploy": "git add . && git commit && webpack -p && eb deploy",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
-    "start-dev": "nodemon server/index.js; npm run react-dev",
+    "start-dev": "nodemon server/index.js & npm run react-dev",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
