@@ -15,7 +15,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('ENVIRONMENT', process.env.NODE_ENV);
     let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`;
     axios.get(photosEndpoint)
       .then((response) => {
