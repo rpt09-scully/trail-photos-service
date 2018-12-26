@@ -9,6 +9,7 @@ let getTrailIdURL = () => {
 
 let detectEnvironment = () => {
   let SERVICE_HOSTS = {};
+  console.log('ENVIRONMENT', process.env.NODE_ENV);
   if (process.env.NODE_ENV === 'production') {
     SERVICE_HOSTS =
     {
