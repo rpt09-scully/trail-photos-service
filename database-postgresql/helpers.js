@@ -1,7 +1,6 @@
 const client = require('./connection');
 
 const getPhotos = (trailId, sortOrder, callback) => {
-  console.log("client", client);
   const sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
 
   const getPhotosPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1' + sortOrderStatement;

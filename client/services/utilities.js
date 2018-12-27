@@ -12,11 +12,11 @@ let detectEnvironment = () => {
   if (process.env.NODE_ENV === 'production') {
     SERVICE_HOSTS =
     {
-      trails: '',
-      profile: '',
+      trails: 'http://localhost:3001',
+      profile: 'http://profile-service.be6c6ztrma.us-west-2.elasticbeanstalk.com',
       photos: 'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com',
-      reviews: '',
-      paths: ''
+      reviews: 'http://reviewservice.jsxvmg3wq3.us-west-1.elasticbeanstalk.com',
+      paths: 'http://ec2-54-172-80-40.compute-1.amazonaws.com'
     };
   } else {
     SERVICE_HOSTS = {

@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  position: relative;
+  display: flex;
+}
+
+.titleBar {
+  color: white;
+  background-color: black;
+}
+
+.profileImage {
+  width: 5%;
+  height: 5%;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+}
+.prev, .next{
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  color: orange;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.prev {
+  left: 0%;
+}
+
+.next {
+  right: 0%;
+}

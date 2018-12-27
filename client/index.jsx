@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import styles from './styles/Index.css';
 import Photos from './components/Photos.jsx';
+import PhotoPopUp from './components/PhotoPopUp.jsx';
 import { getTrailIdURL, detectEnvironment } from './services/utilities';
+import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +12,51 @@ class App extends React.Component {
     this.state = {
       currentTrailId: getTrailIdURL(),
       environment: detectEnvironment(),
-      photos: []
+      photos: [],
+      currentPhotoCounter: undefined,
+      currentPhotoInfo: {},
+      currentProfileInfo: {}
     };
+    this.handlePhotoClick = this.handlePhotoClick.bind(this);
+    this.handlePhotoClickTrans = this.handlePhotoClickTrans.bind(this);
+  }
+
+  handlePhotoClick(photoCounter) {
+    this.setState({currentPhotoInfo: this.state.photos[photoCounter]}, () => {
+      let photoUserId = this.state.currentPhotoInfo.attributes.user_id;
+      let profilesEndpoint = this.state.environment.profile + `/user/${photoUserId}`;
+      axios.get(profilesEndpoint)
+        .then((response) => {
+          this.setState({currentProfileInfo: response.data.data});
+          this.setState({currentPhotoCounter: photoCounter});
+        })
+        .catch(function (error) {
+          console.log('err', error);
+        });
+    });
+
+
+  }
+
+  handlePhotoClickTrans(e) {
+    let newCounter;
+    let currentPhotoCounter = this.state.currentPhotoCounter;
+    let keyWords = {
+      cancel: () => {
+      },
+      next: () => {
+        return currentPhotoCounter + 1;
+      },
+      prev: () => {
+        return currentPhotoCounter - 1;
+      }
+    };
+
+    for(var key in keyWords){
+      if(e.className.includes(key)){
+        key !== "cancel" && (newCounter = keyWords[key]()) && this.handlePhotoClick(newCounter);
+      }
+    }
   }
 
   componentDidMount() {
@@ -38,7 +83,8 @@ class App extends React.Component {
         <div>
           Sort Bar Placeholder
         </div>
-        <Photos photos = {this.state.photos}/>
+        <Photos photos = {this.state.photos} photoClickHandler = {this.handlePhotoClick}/>
+        {this.state.currentPhotoCounter !== undefined && <PhotoPopUp currentPhotoInfo = {this.state.currentPhotoInfo} currentProfileInfo = {this.state.currentProfileInfo} photoClickTransHandler = {this.handlePhotoClickTrans}/>}
       </div>
     );
   }
