@@ -43,6 +43,7 @@ class App extends React.Component {
     let currentPhotoCounter = this.state.currentPhotoCounter;
     let keyWords = {
       cancel: () => {
+        this.setState({currentPhotoCounter: undefined});
       },
       next: () => {
         return currentPhotoCounter + 1;
@@ -54,7 +55,8 @@ class App extends React.Component {
 
     for(var key in keyWords){
       if(e.className.includes(key)){
-        key !== "cancel" && (newCounter = keyWords[key]()) && this.handlePhotoClick(newCounter);
+        newCounter = keyWords[key]();
+        key !== "cancel" && this.handlePhotoClick(newCounter);
       }
     }
   }

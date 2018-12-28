@@ -5,20 +5,23 @@ const PhotoPopUp = (props) => {
   return (
     <div className = {styles.container} onClick = { e => props.photoClickTransHandler(e.target)}>
       <div className = {styles.topContainer}>
+        <div className = {styles.cancel}>CANCEL</div>
         <div className = {styles.prev}>PREV</div>
-        <div>
         <img className = {styles.image} src = {props.currentPhotoInfo.attributes.photo_url}></img>
-        </div>
         <div className = {styles.next}>NEXT</div>
       </div>
 
-      <div className = {styles.titleBar}>
+      <div className = {styles.bottomContainer}>
         <img className = {styles.profileImage} src = {props.currentProfileInfo.attributes.photo_url}></img>
-        {props.currentProfileInfo.attributes.first_name} {props.currentProfileInfo.attributes.last_name}<br/>
-        {props.currentPhotoInfo.attributes.caption} <br />
+        <div className = {styles.descName}>
+          {props.currentProfileInfo.attributes.first_name} {props.currentProfileInfo.attributes.last_name}<br/>
+          {props.currentPhotoInfo.attributes.caption} <br />
+        </div>
+        <div className = {styles.date}>
         {props.currentPhotoInfo.attributes.upload_date}
-      <div className = "cancel">CANCEL</div>
+        </div>
       </div>
+
     </div>
   );
 };
