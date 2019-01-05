@@ -15,10 +15,12 @@ class App extends React.Component {
       photos: [],
       currentPhotoCounter: undefined,
       currentPhotoInfo: {},
-      currentProfileInfo: {}
+      currentProfileInfo: {},
+      currentSortType: "nineTrailsSort"
     };
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
     this.handlePhotoClickTrans = this.handlePhotoClickTrans.bind(this);
+    this.handleSortTypeClick = this.handleSortTypeClick.bind(this);
   }
 
   handlePhotoClick(photoCounter) {
@@ -36,6 +38,27 @@ class App extends React.Component {
     });
 
 
+  }
+
+  handleSortTypeClick(sortType) {
+    this.setState({currentSortType: sortType}, () => {
+
+    let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`
+    if(this.state.currentSortType === "newSort"){
+      photosEndpoint += `?sort=desc`;
+    } else if (this.state.currentSortType === "oldSort"){
+      photosEndpoint += `?sort=asc`;
+    }
+
+    axios.get(photosEndpoint)
+      .then((response) => {
+        let photoData = response.data.data;
+        this.setState({photos: photoData});
+      })
+      .catch(function (error) {
+        console.log('err', error);
+      });
+    });
   }
 
   handlePhotoClickTrans(e) {
@@ -60,17 +83,8 @@ class App extends React.Component {
       }
     }
   }
-
   componentDidMount() {
-    let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`;
-    axios.get(photosEndpoint)
-      .then((response) => {
-        let photoData = response.data.data;
-        this.setState({photos: photoData});
-      })
-      .catch(function (error) {
-        console.log('err', error);
-      });
+    this.handleSortTypeClick("nineTrailsSort");
   }
 
   render() {
@@ -82,8 +96,8 @@ class App extends React.Component {
         <div>
           Button Bar Placeholder
         </div>
-        <div>
-          Sort Bar Placeholder
+        <div onClick = { (e) => { this.handleSortTypeClick(e.target.className)}} >
+          <span className = "nineTrailsSort">All Trails Sort</span> | <span className = "newSort">Newest First</span> | <span className = "oldSort">Oldest First</span>
         </div>
         <Photos photos = {this.state.photos} photoClickHandler = {this.handlePhotoClick}/>
         {this.state.currentPhotoCounter !== undefined && <PhotoPopUp currentPhotoInfo = {this.state.currentPhotoInfo} currentProfileInfo = {this.state.currentProfileInfo} photoClickTransHandler = {this.handlePhotoClickTrans}/>}
