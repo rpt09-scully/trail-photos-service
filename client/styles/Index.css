@@ -22,3 +22,7 @@ h2 {
 .rprbaritem{
   justify-content: space-evenly;
 }
+
+.sortText {
+  color: #4bafe1;
+}
