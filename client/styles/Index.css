@@ -27,6 +27,9 @@ h2 {
   color: #4bafe1;
 }
 
+.sortText, .sortTextClicked {
+  cursor: pointer;
+}
 .sortTextClicked {
   color: #4f4c3e;
 }

@@ -20,6 +20,7 @@
     "start-dev": "nodemon server/index.js & npm run react-dev",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
+    "lint": "eslint $PWD --ext .js,.jsx --fix; exit 0",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
     "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData"
   },

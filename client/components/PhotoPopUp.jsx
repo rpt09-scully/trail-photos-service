@@ -18,7 +18,7 @@ const PhotoPopUp = (props) => {
           {props.currentPhotoInfo.attributes.caption} <br />
         </div>
         <div className = {styles.date}>
-        {props.currentPhotoInfo.attributes.upload_date}
+          {props.currentPhotoInfo.attributes.upload_date}
         </div>
       </div>
 
