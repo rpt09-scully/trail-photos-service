@@ -26,3 +26,7 @@ h2 {
 .sortText {
   color: #4bafe1;
 }
+
+.sortTextClicked {
+  color: #4f4c3e;
+}

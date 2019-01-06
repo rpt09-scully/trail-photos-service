@@ -41,12 +41,13 @@ class App extends React.Component {
   }
 
   handleSortTypeClick(sortType) {
-    this.setState({currentSortType: sortType}, () => {
+    let sortTypeList = sortType.split(" ");
+    this.setState({currentSortType: sortTypeList[0]}, () => {
 
     let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`
-    if(this.state.currentSortType.includes("newSort")){
+    if(this.state.currentSortType === "newSort"){
       photosEndpoint += `?sort=desc`;
-    } else if (this.state.currentSortType.includes("oldSort")){
+    } else if (this.state.currentSortType === "oldSort"){
       photosEndpoint += `?sort=asc`;
     }
 
@@ -54,8 +55,19 @@ class App extends React.Component {
       .then((response) => {
         let photoData = response.data.data;
         this.setState({photos: photoData});
-        var clickedSort = document.getElementsByClassName(`${this.state.currentSortType}`);
-        console.log("hi", clickedSort);
+        if(document.getElementById("sortBar")){
+          var sortChildren = document.getElementById("sortBar").children;
+          for(var key in sortChildren){
+            if(sortChildren[key].classList){
+              if(Object.values(sortChildren[key].classList).includes(this.state.currentSortType)){
+                sortChildren[key].classList.add(`${styles.sortTextClicked}`)
+              } else {
+                sortChildren[key].classList.remove(`${styles.sortTextClicked}`);
+                sortChildren[key].classList.add(`${styles.sortText}`);
+              }
+            }
+          }
+        }
       })
       .catch(function (error) {
         console.log('err', error);
@@ -95,8 +107,8 @@ class App extends React.Component {
         <h2>
           Share your experience to help other people learn about this trail:
         </h2>
-        <div onClick = { (e) => { this.handleSortTypeClick(e.target.className)}} >
-          <span className = {`nineTrailsSort ${styles.sortText}`}>NineTrails Sort</span> | <span className = {`newSort ${styles.sortText}`}>Newest First</span> | <span className = {`oldSort ${styles.sortText}`}>Oldest First</span>
+        <div id = "sortBar" onClick = { (e) => { this.handleSortTypeClick(e.target.className)}} >
+          <span className = {`nineTrailsSort`}>NineTrails Sort</span> | <span className = {`newSort`}>Newest First</span> | <span className = {`oldSort`}>Oldest First</span>
         </div>
         <Photos photos = {this.state.photos} photoClickHandler = {this.handlePhotoClick}/>
         {this.state.currentPhotoCounter !== undefined && <PhotoPopUp currentPhotoInfo = {this.state.currentPhotoInfo} currentProfileInfo = {this.state.currentProfileInfo} photoClickTransHandler = {this.handlePhotoClickTrans}/>}
