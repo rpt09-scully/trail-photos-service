@@ -14,7 +14,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build-deploy": "kill $(lsof -t -i:3003); webpack -p && git add . && git commit; eb deploy",
+    "build-deploy": "kill $(lsof -t -i:3003); webpack -p && git add . && git commit && eb deploy",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/index.js & npm run react-dev",
