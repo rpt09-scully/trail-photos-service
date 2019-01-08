@@ -51,7 +51,7 @@
     "requestretry": "^3.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^3.3.0",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1"
   }
 }

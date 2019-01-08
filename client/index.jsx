@@ -59,12 +59,7 @@ class App extends React.Component {
             var sortChildren = document.getElementById('sortBar').children;
             for (var key in sortChildren) {
               if (sortChildren[key].classList) {
-                if (Object.values(sortChildren[key].classList).includes(this.state.currentSortType)) {
-                  sortChildren[key].classList.add(`${styles.sortTextClicked}`);
-                } else {
-                  sortChildren[key].classList.remove(`${styles.sortTextClicked}`);
-                  sortChildren[key].classList.add(`${styles.sortText}`);
-                }
+                Object.values(sortChildren[key].classList).includes(this.state.currentSortType) ? sortChildren[key].classList.add(`${styles.sortTextClicked}`) : sortChildren[key].classList.remove(`${styles.sortTextClicked}`); sortChildren[key].classList.add(`${styles.sortText}`);
               }
             }
           }
