@@ -4,11 +4,14 @@ const getPhotos = (trailId, sortOrder, callback) => {
   const sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
 
   const getPhotosPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1' + sortOrderStatement;
-  // connectDB();
+  //connectDB();
   //need to client end here if I drop database - you will see it has a lot of connections.
   client.query(getPhotosPSQLStatement, [trailId], (err, res) => {
 
-    if (err) { throw err; }
+    if (err) {
+      console.log('Error with getPhotos DB Request - timestamp:', new Date());
+      // throw err;
+    }
     let result = {
       data: res.rows.map(item => {
         let resultItem = {};
@@ -29,7 +32,10 @@ const getPhotos = (trailId, sortOrder, callback) => {
 const getPhotosCount = (trailId, callback) => {
   const getPhotosCountPSQLStatement = 'SELECT COUNT(*) FROM trailphotos WHERE trail_id = $1';
   client.query(getPhotosCountPSQLStatement, [trailId], (err, res) => {
-    if (err) { throw err; }
+    if (err) {
+      console.log('Error with getPhotosCount DB Request - timestamp:', new Date());
+      // throw err;
+    }
     let result = {
       data: {
         type: 'trail-photos-count',
@@ -46,7 +52,10 @@ const getPhotosCount = (trailId, callback) => {
 const getHeroPhoto = (trailId, callback) => {
   const getHeroPhotoPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1 AND is_hero_photo = true';
   client.query(getHeroPhotoPSQLStatement, [trailId], (err, res) => {
-    if (err) { throw err; }
+    if (err) {
+      console.log('Error with getHeroPhoto DB Request - timestamp:', new Date());
+      throw err;
+    }
     let {photo_id, photo_url, trail_id, user_id, upload_date, caption, is_hero_photo} = res.rows[0];
     trail_id = trail_id.toString();
     user_id = user_id.toString();
