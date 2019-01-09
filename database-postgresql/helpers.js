@@ -1,11 +1,53 @@
-var { client, connectDB } = require('./connection');
+const { Client } = require('pg');
+require('dotenv').config();
 
-const getPhotos = (trailId, sortOrder, callback) => {
+let clientConfig = {
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  port: process.env.DBPORT,
+  user: process.env.DBUSERNAME,
+  password: process.env.DBPASSWORD
+};
+
+let clientGen = () => new Client(clientConfig);
+let client;
+
+let invokeConnection = (fn) => {
+  client = clientGen();
+  client.connect()
+    .then(() => {
+      console.log('connected');
+      fn();
+    })
+    .catch( e => {
+      var endPromise = new Promise(function(resolve, reject) {
+        console.log('In endPromise');
+        client.end(err => {
+          console.log('client has disconnected');
+          resolve();
+          if (err) {
+            console.log('error during disconnection');
+          }
+        });
+      });
+      endPromise.then(() => {
+        console.log('CURRENT TIME OF ERROR', new Date());
+        console.error('connection error', e.stack);
+        setTimeout(() => {
+          invokeConnection(fn);
+        }, 45000);
+      });
+    });
+};
+
+var getPhotos = (trailId, sortOrder, callback) => {
+  invokeConnection(getPhotosWork.bind(null, trailId, sortOrder, callback));
+};
+
+var getPhotosWork = (trailId, sortOrder, callback) => {
   const sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
-
   const getPhotosPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1' + sortOrderStatement;
-  //connectDB();
-  //need to client end here if I drop database - you will see it has a lot of connections.
+
   client.query(getPhotosPSQLStatement, [trailId], (err, res) => {
 
     if (err) {
@@ -25,7 +67,7 @@ const getPhotos = (trailId, sortOrder, callback) => {
       })
     };
     callback(result);
-
+    client.end();
   });
 };
 
