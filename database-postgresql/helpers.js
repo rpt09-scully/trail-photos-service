@@ -1,10 +1,11 @@
-const client = require('./connection');
+var { client, connectDB } = require('./connection');
 
 const getPhotos = (trailId, sortOrder, callback) => {
   const sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
 
   const getPhotosPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1' + sortOrderStatement;
-
+  // connectDB();
+  //need to client end here if I drop database - you will see it has a lot of connections.
   client.query(getPhotosPSQLStatement, [trailId], (err, res) => {
 
     if (err) { throw err; }
@@ -21,12 +22,12 @@ const getPhotos = (trailId, sortOrder, callback) => {
       })
     };
     callback(result);
+
   });
 };
 
 const getPhotosCount = (trailId, callback) => {
   const getPhotosCountPSQLStatement = 'SELECT COUNT(*) FROM trailphotos WHERE trail_id = $1';
-
   client.query(getPhotosCountPSQLStatement, [trailId], (err, res) => {
     if (err) { throw err; }
     let result = {
