@@ -5,7 +5,7 @@ const PhotoPopUp = (props) => {
   return (
     <div className = {styles.container} onClick = { e => props.photoClickTransHandler(e.target)}>
       <div className = {styles.topContainer}>
-        <div className = {styles.cancel}>CANCEL</div>
+        <div className = {styles.cancel}>X</div>
         <div className = {styles.prev}>PREV</div>
         <img className = {styles.image} src = {props.currentPhotoInfo.attributes.photo_url}></img>
         <div className = {styles.next}>NEXT</div>

@@ -7,7 +7,8 @@ const getPhotos = (trailId, sortOrder, callback) => {
 
   client.query(getPhotosPSQLStatement, [trailId], (err, res) => {
     if (err) {
-      let myErr = new Error (getPhotosPSQLStatement, err);
+      let myErr = new Error (err);
+      myErr.query = getPhotosPSQLStatement;
       callback(myErr);
     }
     let result = {
@@ -31,10 +32,10 @@ const getPhotosCount = (trailId, callback) => {
 
   client.query(getPhotosCountPSQLStatement, [trailId], (err, res) => {
     if (err) {
-      let myErr = new Error (getPhotosPSQLStatement, err);
+      let myErr = new Error (err);
+      myErr.query = getPhotosPSQLStatement;
       callback(myErr);
     }
-
     let result = {
       data: {
         type: 'trail-photos-count',
@@ -52,7 +53,8 @@ const getHeroPhoto = (trailId, callback) => {
   const getHeroPhotoPSQLStatement = 'SELECT * FROM trailphotos WHERE trail_id = $1 AND is_hero_photo = true';
   client.query(getHeroPhotoPSQLStatement, [trailId], (err, res) => {
     if (err) {
-      let myErr = new Error (getPhotosPSQLStatement, err);
+      let myErr = new Error (err);
+      myErr.query = getPhotosPSQLStatement;
       callback(myErr);
     }
     let {photo_id, photo_url, trail_id, user_id, upload_date, caption, is_hero_photo} = res.rows[0];

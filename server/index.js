@@ -16,8 +16,7 @@ app.use(express.static('public'));
 app.use('/:trailId', trailPhotos);
 
 app.use(function (err, req, res, next) {
-  console.error('hiii', err.stack);
-  console.log('this is the error', err);
+  console.error(err);
   res.status(500).send('Something broke!');
 });
 

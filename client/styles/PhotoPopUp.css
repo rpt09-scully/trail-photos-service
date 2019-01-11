@@ -52,9 +52,11 @@
 
 .cancel {
   position: absolute;
+  margin-right: 15px;
   right: 0%;
   color: white;
   z-index: 10;
+  text-align: center;
 }
 
 .prev {
