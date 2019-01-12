@@ -5,7 +5,7 @@ import styles from '../styles/Photos.css';
 const Photos = (props) => {
   return (
     <div className = {styles.container}>
-      {props.photos.map((photo, index) => <Photo key = {index} photoItem = {photo}/>)}
+      {props.photos.map((photo, index) => <Photo key = {index} photoItem = {photo} pagePhotoCounter = {index} photoClickHandler = {props.photoClickHandler}/>)}
     </div>
   );
 };

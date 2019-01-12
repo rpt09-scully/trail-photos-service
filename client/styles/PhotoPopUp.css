@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  top: 25%;
+  left: 25%;
+  position: fixed;
+  z-index: 20;
+}
+
+.topContainer {
+  position: relative;
+  display: flex;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+  opacity: 0.8;
+  position: relative;
+  bottom: 3.3em;
+}
+
+.descName {
+  display: flex;
+  flex-grow: 2;
+}
+.date {
+  color: pink;
+}
+.profileImage {
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+}
+.prev, .next{
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  color: orange;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.cancel {
+  position: absolute;
+  margin-right: 15px;
+  right: 0%;
+  color: white;
+  z-index: 10;
+  text-align: center;
+}
+
+.prev {
+  left: 0%;
+}
+
+.next {
+  right: 0%;
+}

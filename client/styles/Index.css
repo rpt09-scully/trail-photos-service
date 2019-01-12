@@ -22,3 +22,14 @@ h2 {
 .rprbaritem{
   justify-content: space-evenly;
 }
+
+.sortText {
+  color: #4bafe1;
+}
+
+.sortText, .sortTextClicked {
+  cursor: pointer;
+}
+.sortTextClicked {
+  color: #4f4c3e;
+}

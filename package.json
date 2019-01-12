@@ -14,12 +14,13 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build-deploy": "git add . && git commit && webpack -p && eb deploy",
+    "build-deploy": "kill $(lsof -t -i:3003); npm run lint && webpack -p && git add . && git commit; eb deploy",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/index.js & npm run react-dev",
     "test": "jest --verbose",
     "testUpdate": "npm test -- --updateSnapshot",
+    "lint": "eslint $PWD --ext .js,.jsx --fix; exit 0",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
     "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData"
   },
@@ -28,7 +29,9 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "i": "^0.3.6",
     "jquery": "^3.3.1",
+    "npm": "^6.5.0",
     "pg": "^7.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -48,7 +51,7 @@
     "requestretry": "^3.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^3.3.0",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1"
   }
 }

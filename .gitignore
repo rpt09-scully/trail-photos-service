@@ -1,6 +1,5 @@
 ## MAC files ##
 .DS_Store
-captainslog.md
 
 ## NPM ##
 npm
@@ -27,6 +26,8 @@ dist/
 
 #SECRETS
 .env
+.actual.env
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
