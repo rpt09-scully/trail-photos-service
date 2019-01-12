@@ -24,20 +24,20 @@ class App extends React.Component {
   }
 
   handlePhotoClick(photoCounter) {
-    this.setState({currentPhotoInfo: this.state.photos[photoCounter]}, () => {
-      let photoUserId = this.state.currentPhotoInfo.attributes.user_id;
-      let profilesEndpoint = this.state.environment.profile + `/user/${photoUserId}`;
-      axios.get(profilesEndpoint)
-        .then((response) => {
-          this.setState({currentProfileInfo: response.data.data});
-          this.setState({currentPhotoCounter: photoCounter});
-        })
-        .catch(function (error) {
-          console.log('err', error);
-        });
-    });
-
-
+    if (this.state.photos[photoCounter]) {
+      this.setState({currentPhotoInfo: this.state.photos[photoCounter]}, () => {
+        let photoUserId = this.state.currentPhotoInfo.attributes.user_id;
+        let profilesEndpoint = this.state.environment.profile + `/user/${photoUserId}`;
+        axios.get(profilesEndpoint)
+          .then((response) => {
+            this.setState({currentProfileInfo: response.data.data});
+            this.setState({currentPhotoCounter: photoCounter});
+          })
+          .catch(function (error) {
+            console.log('err', error);
+          });
+      });
+    }
   }
 
   handleSortTypeClick(sortType) {
@@ -81,7 +81,7 @@ class App extends React.Component {
         return currentPhotoCounter + 1;
       },
       prev: () => {
-        return currentPhotoCounter - 1;
+        if (currentPhotoCounter) { return currentPhotoCounter - 1; }
       }
     };
 
