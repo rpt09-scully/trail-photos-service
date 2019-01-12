@@ -1,6 +1,6 @@
 .container {
-  border-style: solid;
-  border-color: red;
+  /* border-style: solid;
+  border-color: red; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
