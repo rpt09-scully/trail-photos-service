@@ -15,9 +15,10 @@ const getPhotos = (trailId, sortOrder, callback) => {
       data: res.rows.map(item => {
         let resultItem = {};
         let {photo_id, photo_url, trail_id, user_id, upload_date, caption, is_hero_photo} = item;
+        let thumb_photo_url = item.photo_url.replace('w=700&h=520', 'w=80&h=80');
         trail_id = trail_id.toString();
         user_id = user_id.toString();
-        resultItem.attributes = {photo_url, trail_id, user_id, upload_date, caption, is_hero_photo};
+        resultItem.attributes = {photo_url, thumb_photo_url, trail_id, user_id, upload_date, caption, is_hero_photo};
         resultItem.type = 'trail-photos';
         resultItem.id = photo_id.toString();
         return resultItem;
