@@ -4,6 +4,22 @@ const ajv = new Ajv({ allErrors: true });
 var photosAttributesSchema = {
   type: 'object',
   additionalProperties: false,
+  maxProperties: 7,
+  required: ['photo_url', 'thumb_photo_url', 'trail_id', 'user_id', 'upload_date', 'caption', 'is_hero_photo'],
+  'properties': {
+    'photo_url': {'type': 'string'},
+    'thumb_photo_url': {'type': 'string'},
+    'trail_id': {'type': 'string'},
+    'user_id': {'type': 'string'},
+    'upload_date': {'type': 'string'},
+    'caption': {'type': 'string'},
+    'is_hero_photo': {'type': 'boolean'}
+  }
+};
+
+var heroPhotosAttributesSchema = {
+  type: 'object',
+  additionalProperties: false,
   maxProperties: 6,
   required: ['photo_url', 'trail_id', 'user_id', 'upload_date', 'caption', 'is_hero_photo'],
   'properties': {
@@ -28,6 +44,18 @@ var photosInnerSchema = {
   }
 };
 
+var heroPhotosInnerSchema = {
+  'type': 'object',
+  additionalProperties: false,
+  required: ['attributes', 'type', 'id'],
+  maxProperties: 3,
+  'properties': {
+    'attributes': heroPhotosAttributesSchema,
+    'type': {'type': 'string'},
+    'id': {'type': 'string'}
+  }
+};
+
 const photosInnerArraySchema = {
   type: 'array',
   additionalProperties: false,
@@ -47,7 +75,7 @@ const heroPhotosSchema = {
   additionalProperties: false,
   required: ['data'],
   maxProperties: 1,
-  properties: { 'data': photosInnerSchema }
+  properties: { 'data': heroPhotosInnerSchema }
 };
 
 var photosCountAttributesSchema = {
@@ -100,6 +128,7 @@ var schemaValidation = (schema, obj) => {
 //     {
 //       attributes: {
 //         "photo_url": "http://aws.amazon.com/983245iuhjkldfjkdf.png",
+//         "thumb_photo_url": "http://aws.amazon.com/983245iuhjkldfjkdf.png",
 //         "trail_id": 5,
 //         "user_id": 32,
 //         "upload_date": 	"2018-11-18T02:06:47.097Z",

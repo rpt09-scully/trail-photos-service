@@ -77,6 +77,7 @@ describe('Database Tests', () => {
             'caption': 'est aliquam ipsa',
             'is_hero_photo': true,
             'photo_url': 'https://loremflickr.com/cache/resized/4548_37476785314_096d5716ef_c_700_520_nofilter.jpg',
+            'thumb_photo_url': 'https://loremflickr.com/cache/resized/4548_37476785314_096d5716ef_c_700_520_nofilter.jpg',
             'trail_id': '3',
             'upload_date': '2018-07-06T13:09:28.493Z',
             'user_id': '79'
@@ -91,6 +92,7 @@ describe('Database Tests', () => {
             'caption': 'autem corrupti corporis',
             'is_hero_photo': false,
             'photo_url': 'https://loremflickr.com/cache/resized/1789_41654679900_799c6df276_c_700_520_nofilter.jpg',
+            'thumb_photo_url': 'https://loremflickr.com/cache/resized/1789_41654679900_799c6df276_c_700_520_nofilter.jpg',
             'trail_id': '3',
             'upload_date': '2018-07-30T13:02:49.706Z',
             'user_id': '60'
