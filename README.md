@@ -98,7 +98,8 @@ client.query.mockImplementation((PSQLStatement, [trailId], callback) => {
 Error paths explicitly logged and handled where node will terminate:
 + Attempting database connection... FAIL
 + Attempting database connection... SUCCESS... FAIL... (client.end() will be executed before node terminates)
-+ Attempting database connection... SUCCESS... Attempting to query data... FAIL... Status 500 is sent to the client
++ Attempting database connection... SUCCESS... Attempting to access database... FAIL... Nothing happens (console.log on client says Error: Network Error....)
++ Attempting database connection... SUCCESS... Attempting to access database... SUCCESS... Attempting to query data... FAIL... Status 500 is sent to the client
 
 
 Please note, the demo is currently hosted on AWS.  AWS automatically restarts if node crashes / stops due to an error.  Restarting node will trigger the reconnects of all subsequent connections (e.g. client connection, etc).

@@ -20,10 +20,6 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
 });
 
-process.on('unhandledRejection', reason => {
-  throw ('Unhandled Rejection at:', reason, reason.stack);
-});
-
 app.listen(port, () => console.log(new Date(), `trail-photos app listening on port ${port}`));
 
 module.exports = app;

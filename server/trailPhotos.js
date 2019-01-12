@@ -20,13 +20,21 @@ router.get('/photos', (req, res, next) => {
 
 router.get('/photosCount', (req, res, next) => {
   db.getPhotosCount(req.params.trailId, result => {
-    res.send(result);
+    if (result instanceof Error) {
+      next(result);
+    } else {
+      res.send(result);
+    }
   });
 });
 
 router.get('/heroPhoto', (req, res, next) => {
   db.getHeroPhoto(req.params.trailId, result => {
-    res.send(result);
+    if (result instanceof Error) {
+      next(result);
+    } else {
+      res.send(result);
+    }
   });
 });
 

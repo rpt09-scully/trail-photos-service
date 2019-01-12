@@ -53,6 +53,7 @@ class App extends React.Component {
 
       axios.get(photosEndpoint)
         .then((response) => {
+          // console.log("GENERATE", generateResponsiveImage);
           let photoData = response.data.data;
           this.setState({photos: photoData});
           if (document.getElementById('sortBar')) {
