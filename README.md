@@ -18,7 +18,7 @@
 ### API Endpoints
 + GET `/:trailId/photos?sortBy={asc|desc}`
   - Given a trailId, retrieves photos affiliated with the respective trailId
-+ GET `/:trailId/photoCount`
++ GET `/:trailId/photosCount`
   - Given a trailId, retrieves total count of photos affiliated with the respective trailId
 + GET `/:trailId/heroPhoto`
   - Given a trailId, retrieves hero photo affiliated with respective the trailId
