@@ -1,4 +1,5 @@
 const client = require('./connection');
+let moment = require('moment');
 
 const getPhotos = (trailId, sortOrder, callback) => {
   const sortOrderStatement = sortOrder ? `ORDER BY upload_date ${sortOrder}` : '';
