@@ -1,13 +1,10 @@
 .container {
   /* border-style: solid;
-  border-color: orange; */
+  border-color: orange;
+  width: calc(100%/7);*/
   display: flex;
-
 }
 .image {
-  /* width: calc(100%/7); */
-  width: 80px;
-  height: 80px;
   padding: 2.5px;
 }
 
