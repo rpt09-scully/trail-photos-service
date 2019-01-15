@@ -1,6 +1,3 @@
-
-
-
 .container {
   /* border-style: solid;
   border-color: blue; */
@@ -11,14 +8,14 @@
   color: #414141;
 }
 
+.sortBarContainer {
+  margin: 10px;
+}
+
 
 h2 {
   font-size: 17px;
   font-weight: normal;
-}
-
-.rprbaritem{
-  justify-content: space-evenly;
 }
 
 .sortText {

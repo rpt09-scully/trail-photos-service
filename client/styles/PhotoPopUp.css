@@ -1,24 +1,28 @@
 .master {
   display: flex;
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  position: fixed;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
 }
 .container {
   display: flex;
   flex-direction: column;
-  top: 25%;
-  left: 25%;
   position: fixed;
   z-index: 20;
+  animation: fadeIn 1s;
+}
+
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 
 .topContainer {
@@ -42,13 +46,15 @@
   flex-grow: 2;
 }
 .date {
-  color: pink;
+  color: white;
 }
 .profileImage {
   object-fit: cover;
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .image {
@@ -57,27 +63,65 @@
 }
 .prev, .next{
   height: 100%;
+  width: 60px;
   position: absolute;
   background-color: black;
-  color: orange;
   opacity: 0.8;
   display: flex;
   align-items: center;
+
 }
 
-.cancel {
+/* .cancel {
   position: absolute;
   margin-right: 15px;
   right: 0%;
   color: white;
   z-index: 10;
   text-align: center;
+  justify-content: center;
+} */
+
+.cancel {
+  position: absolute;
+  top: 0px;
+  color: white;
+  z-index: 10;
+  align-self: center;
 }
 
 .prev {
   left: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .next {
   right: 0%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nextItem, .prevItem{
+  display: block;
+  /* background-color: green; */
+  height: 62px;
+  width:70%;
+  background-image : url(https://cdn-assets.alltrails.com/assets/buttons/controls-a037f220640756d8737007f50af493bf.png);
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.nextItem{
+  background-position-x:40px;
+  background-position-y:0px;
+}
+
+.prevItem{
+  background-position-x:0px;
+  background-position-y:0px;
 }
