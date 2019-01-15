@@ -5,6 +5,12 @@
   display: flex;
 }
 .image {
+<<<<<<< HEAD
+=======
+  /* width: calc(100%/7); */
+  width: 80px;
+  height: 80px;
+>>>>>>> master
   padding: 2.5px;
 }
 

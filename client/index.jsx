@@ -102,12 +102,20 @@ class App extends React.Component {
         <h2>
           Share your experience to help other people learn about this trail:
         </h2>
+<<<<<<< HEAD
         <div id = "sortBar" className = {styles.sortBarContainer} onClick = { (e) => this.handleSortTypeClick(e.target.className)} >
           <span className = {'nineTrailsSort'}>NineTrails Sort</span> | <span className = {'newSort'}>Newest First</span> | <span className = {'oldSort'}>Oldest First</span>
         </div>
 
         <Photos photos = {this.state.photos} photoClickHandler = {this.handlePhotoClick}/>
         {this.state.currentPhotoCounter !== undefined && <PhotoPopUp key = {this.state.currentProfileInfo.attributes.photoUrl} currentPhotoInfo = {this.state.currentPhotoInfo} currentProfileInfo = {this.state.currentProfileInfo} photoClickTransHandler = {this.handlePhotoClickTrans}/>}
+=======
+        <div id = "sortBar" onClick = { (e) => { this.handleSortTypeClick(e.target.className); }} >
+          <span className = {'nineTrailsSort'}>NineTrails Sort</span> | <span className = {'newSort'}>Newest First</span> | <span className = {'oldSort'}>Oldest First</span>
+        </div>
+        <Photos photos = {this.state.photos} photoClickHandler = {this.handlePhotoClick}/>
+        {this.state.currentPhotoCounter !== undefined && <PhotoPopUp currentPhotoInfo = {this.state.currentPhotoInfo} currentProfileInfo = {this.state.currentProfileInfo} photoClickTransHandler = {this.handlePhotoClickTrans}/>}
+>>>>>>> master
       </div>
     );
   }

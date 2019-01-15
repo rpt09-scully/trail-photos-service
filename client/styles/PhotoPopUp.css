@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .master {
   display: flex;
   position: fixed;
@@ -23,6 +24,15 @@
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+=======
+.container {
+  display: flex;
+  flex-direction: column;
+  top: 25%;
+  left: 25%;
+  position: fixed;
+  z-index: 20;
+>>>>>>> master
 }
 
 .topContainer {
@@ -46,15 +56,22 @@
   flex-grow: 2;
 }
 .date {
+<<<<<<< HEAD
   color: white;
+=======
+  color: pink;
+>>>>>>> master
 }
 .profileImage {
   object-fit: cover;
   width: 40px;
   height: 40px;
+<<<<<<< HEAD
   border-radius: 50%;
   margin-right: 10px;
   margin-left: 10px;
+=======
+>>>>>>> master
 }
 
 .image {
@@ -63,6 +80,7 @@
 }
 .prev, .next{
   height: 100%;
+<<<<<<< HEAD
   width: 60px;
   position: absolute;
   background-color: black;
@@ -73,12 +91,24 @@
 }
 
 /* .cancel {
+=======
+  position: absolute;
+  background-color: black;
+  color: orange;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.cancel {
+>>>>>>> master
   position: absolute;
   margin-right: 15px;
   right: 0%;
   color: white;
   z-index: 10;
   text-align: center;
+<<<<<<< HEAD
   justify-content: center;
 } */
 
@@ -88,17 +118,23 @@
   color: white;
   z-index: 10;
   align-self: center;
+=======
+>>>>>>> master
 }
 
 .prev {
   left: 0%;
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: center;
+=======
+>>>>>>> master
 }
 
 .next {
   right: 0%;
+<<<<<<< HEAD
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -125,3 +161,6 @@
   background-position-x:0px;
   background-position-y:0px;
 }
+=======
+}
+>>>>>>> master
