@@ -11,10 +11,10 @@
 
 ## 1.1. Related Projects
 
-  - https://github.com/rpt09-scully/reviews-service
-  - https://github.com/rpt09-scully/profile-service
-  - https://github.com/rpt09-scully/trail-service
-  - https://github.com/rpt09-scully/paths-service
+  - [Reviews Service](https://github.com/rpt09-scully/reviews-service)
+  - [Profile Service](https://github.com/rpt09-scully/profile-service)
+  - [Trail Service](https://github.com/rpt09-scully/trail-service)
+  - [Paths Service](https://github.com/rpt09-scully/paths-service)
 
 ## 1.2. Usage
 
@@ -102,7 +102,7 @@ To truly generate consecutive random photos from [unsplash](https://source.unspl
 npm install
 ```
 ### 1.3.5. Start the Server
-1. To run the web server and open `index.html`: run `npm start` (to run the web server, webpack --watch and open `index.html`: run `npm start-dev`).  The trail photos service should now load up.
+1. To run the web server and open `index.html`: run `npm start` (to run the web server, webpack --watch and open `index.html`: run `npm start-dev`).  The trail photos service should now load up (please note, the `gallery feature` of the trail photos service will not work if you do not install the [profile service](#11-Related-Projects)).
 
 ### 1.3.6 [Optional] Run Tests
 + To run all tests: `npm test`
