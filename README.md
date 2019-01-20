@@ -7,8 +7,7 @@
 - [1.3. Requirements / Set Up](#13-Requirements-/-Set-Up)
 - [1.4. Error Handling](#14-Error-Handling)
 - [1.5. Additional Resources](#15-Additional-Resources)
-- [1.6. Related Projects](#16-Related-Projects)
-- [1.7. Backlog / Noted Opportunities](#17-Backlog)
+- [1.6. Backlog / Noted Opportunities](#16-Backlog-/-Noted-Opportunities)
 
 ## 1.1. Related Projects
 
