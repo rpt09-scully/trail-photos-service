@@ -1,3 +1,4 @@
+
 # Trail Photos Service
 
 ## Related Projects
@@ -13,8 +14,11 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 1. [Additional Resources](#additional-resources)
+1. [Related Projects](#related-projects)
 
 ## Usage
+<img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">
+
 ### API Endpoints
 + GET `/:trailId/photos?sortBy={asc|desc}`
   - Given a trailId, retrieves photos affiliated with the respective trailId
@@ -124,3 +128,7 @@ npm install
 
 ## Additional Resources
 + [node-postgres](https://node-postgres.com)
+
+## Backlog / Noted Opportunities
++ Utilize the `unsplash api` in the seed script
+
