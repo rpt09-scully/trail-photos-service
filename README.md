@@ -51,7 +51,6 @@ Trail photos service is a fullstack application that features a series of endpoi
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
 
 ### 1.3.1. Install PostgreSQL and Create TrailPhotosDB Database
 
