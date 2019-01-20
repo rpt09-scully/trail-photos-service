@@ -17,16 +17,24 @@
 1. [Related Projects](#related-projects)
 
 ## Usage
-<img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">  <br/>
-<img src="readme-assets/gallery.gif" width="380" style="margin:13px">
+<img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">
+<br/>
+
++ Gallery Feature:<br/><br/>
+<img hspace = "13px" src="readme-assets/gallery.gif" width="375">
+<br/>
+
++ Sort Feature:<br/><br/>
+<img hspace = "13px" src="readme-assets/sort.gif" width="375">
+<br/>
 
 ### API Endpoints
 + GET `/:trailId/photos?sortBy={asc|desc}`
-  - Given a trailId, retrieves photos affiliated with the respective trailId
+  - Given a trailId, retrieves photos affiliated with the respective trailId (click [here](example-data/get_{trailId}_photos.json) for sample data shape / output)
 + GET `/:trailId/photosCount`
-  - Given a trailId, retrieves total count of photos affiliated with the respective trailId
+  - Given a trailId, retrieves total count of photos affiliated with the respective trailId (click [here](example-data/get_{trailId}_photos.json) for sample data shape / output)
 + GET `/:trailId/heroPhoto`
-  - Given a trailId, retrieves hero photo affiliated with respective the trailId
+  - Given a trailId, retrieves hero photo affiliated with respective the trailId (click [here](example-data/get_{trailId}_heroPhoto.json) for sample data shape / output)
 
 #### Of Note:
 + All data returns in .json format.
