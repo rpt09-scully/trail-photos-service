@@ -18,7 +18,7 @@
 
 ## Usage
 <img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">  <br/>
-<img src="https://i.imgur.com/wkTF7qs.gif" width="380">
+<img src="readme-assets/gallery.gif" width="380" style="margin:13px">
 
 ### API Endpoints
 + GET `/:trailId/photos?sortBy={asc|desc}`
