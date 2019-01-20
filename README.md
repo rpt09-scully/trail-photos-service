@@ -17,7 +17,8 @@
 1. [Related Projects](#related-projects)
 
 ## Usage
-<img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">
+<img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">  <br/>
+<img src="https://i.imgur.com/wkTF7qs.gif" width="380" style="margin:13px">
 
 ### API Endpoints
 + GET `/:trailId/photos?sortBy={asc|desc}`
@@ -37,7 +38,7 @@
 #### Install PostgreSQL and Create TrailPhotosDB Database
 
 In terminal:
-1. Install PostgreSQL:`brew install postgresql` (this example uses PostgreSQL version 10.5)
+1. Install PostgreSQL:`brew install postgresql` (this example uses PostgreSQL version 10.5) (to explore other non-brew options too install PostgreSQL, click [here](https://www.postgresql.org/download/macosx/) for Mac options and click [here](https://www.postgresql.org/download/windows/) for Windows options)
 2. Start PostgresSQL:`brew services start postgresql`
 3. Create `trailPhotosDB`: `createdb trailPhotosDB`
 
