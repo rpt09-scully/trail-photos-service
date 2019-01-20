@@ -134,4 +134,5 @@ Please note, if you host your service on AWS, AWS will automatically restart if 
 
 ## 1.6. Backlog / Noted Opportunities
 + Utilize the `unsplash api` in the seed script
++ Synchronous state workflow for gallery transitions / profile images load
 
