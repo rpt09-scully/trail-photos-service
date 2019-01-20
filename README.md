@@ -17,6 +17,9 @@
 1. [Related Projects](#related-projects)
 
 ## Usage
+
+Trail Photos Service is a series of endpoints and a clickable photo gallery for 9 trails. The service contains a database for storing data about photos affiliated with trails as well as an algorithm to generate custom / test seed data.
+
 <img src="https://user-images.githubusercontent.com/7980628/51434885-0599af80-1c20-11e9-9d68-6bbcb73bcb4d.png" width="400">
 <br/>
 
@@ -109,13 +112,13 @@ client.query.mockImplementation((PSQLStatement, [trailId], callback) => {
 ## Error Handling
 
 Error paths explicitly logged and handled where node will terminate:
-+ Attempting database connection... FAIL
-+ Attempting database connection... SUCCESS... FAIL... (client.end() will be executed before node terminates)
-+ Attempting database connection... SUCCESS... Attempting to access database... FAIL... Nothing happens (console.log on client says Error: Network Error....)
-+ Attempting database connection... SUCCESS... Attempting to access database... SUCCESS... Attempting to query data... FAIL... Status 500 is sent to the client
++ Attempting database connection... FAIL... _ERROR THROWN_
++ Attempting database connection... SUCCESS... FAIL... _ERROR THROWN (client.end() will be executed before node terminates)_
++ Attempting database connection... SUCCESS... Attempting to access database... FAIL... _Nothing happens (console.log on client says Error: Network Error....)_
++ Attempting database connection... SUCCESS... Attempting to access database... SUCCESS... Attempting to query data... FAIL... _Status 500 is sent to the client_
 
 
-Please note, the demo is currently hosted on AWS.  AWS automatically restarts if node crashes / stops due to an error.  Restarting node will trigger the reconnects of all subsequent connections (e.g. client connection, etc).
+Please note, if you host your service on AWS, AWS will automatically restart if node crashes / stops due to an error.  Restarting node will trigger the reconnects of all subsequent connections (e.g. client connection, etc).
 
 
 ## Requirements
