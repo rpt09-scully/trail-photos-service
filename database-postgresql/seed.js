@@ -9,7 +9,7 @@ const fs = require('fs');
 // not every user has a photo
 
 // enter number of mock trails and maximum number of photos per trail below
-var numSampleTrails = 100;
+var numSampleTrails = 20;
 var maxNumPhotosPerTrail = 50;
 var minNumPhotosPerTrail = 30;
 
