@@ -21,6 +21,7 @@ let totalEntries = 100;
 
 while (totalEntries > 0) {
   let newRow = [];
+  let photo_id = totalEntries;
   let trail_id = totalEntries;
   let user_id = faker.random.number({'min': 1, 'max': 100});
   let photo_url = 'https://images.unsplash.com/photo-1499328610109-620357b0eed2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=700&h=520&fit=crop&ixid=eyJhcHBfaWQiOjF9';
@@ -28,7 +29,7 @@ while (totalEntries > 0) {
   let caption = faker.lorem.words();
   let is_hero_photo = false;
 
-  newRow = [trail_id, user_id, upload_date, photo_url, caption, is_hero_photo];
+  newRow = [photo_id, trail_id, user_id, upload_date, photo_url, caption, is_hero_photo];
 
   csvStream.write(newRow);
 
