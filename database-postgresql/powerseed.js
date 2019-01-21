@@ -39,8 +39,9 @@ csvStream.end();
 
 csvStream.on('end', () => {
 
+  console.log('Completed writing to CSV file');
 
-  console.log('Done!');
-
+  
+  
 
 });
