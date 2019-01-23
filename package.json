@@ -23,8 +23,6 @@
     "lint": "eslint $PWD --ext .js,.jsx --fix; exit 0",
     "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
     "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData",
-
-    
     "powerLoad": "psql trailPhotosDB < database-postgresql/powerschema.sql",
     "powerSeed": "node database-postgresql/powerseed.js"
   },
@@ -37,11 +35,14 @@
     "i": "^0.3.6",
     "jquery": "^3.3.1",
     "moment": "^2.23.0",
+    "node-fetch": "^2.3.0",
     "npm": "^6.5.0",
     "pg": "^7.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "unsplash-js": "^4.8.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
