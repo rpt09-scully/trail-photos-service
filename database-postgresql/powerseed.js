@@ -13,7 +13,7 @@ const Unsplash = require('unsplash-js').default;
 // });
 
 
-const photoUrlArray = [];
+
 
 
 // const getPhotos = (page) => {
@@ -48,6 +48,8 @@ const photoUrlArray = [];
 
 // getPhotos(10);
 
+const photoUrlArray = [];
+
 const getFakerPhotos = () => {
 
   while (photoUrlArray.length < 1000) {
@@ -66,7 +68,7 @@ csvStream.pipe(ws);
 // Place header into CSV file
 csvStream.write(['trail_id', 'user_id', 'upload_date', 'photo_url', 'caption', 'is_hero_photo']);
 
-let totalEntries = 1000000;
+let totalEntries = 10;
 
 while (totalEntries > 0) {
 
@@ -75,21 +77,26 @@ while (totalEntries > 0) {
   let fakeCaption = faker.lorem.words();
 
   let photos = 10;
+
   while (photos > 0) {
 
+    let newRow = [];
+    let photo_id = totalEntries;
+    let trail_id = totalEntries;
+    let user_id = userId;
+    let photo_url = photoUrlArray[Math.floor(Math.random() * photoUrlArray.length)];
+    let upload_date = uploadDate;
+    let caption = fakeCaption;
+    let is_hero_photo = false;
+  
+    newRow = [photo_id, trail_id, user_id, upload_date, photo_url, caption, is_hero_photo];
+  
+    csvStream.write(newRow);
+
+    photos--;
+
   }
-  let newRow = [];
-  let photo_id = totalEntries;
-  let trail_id = totalEntries;
-  let user_id = userId;
-  let photo_url = photoUrlArray[Math.floor(Math.random() * photoUrlArray.length)];
-  let upload_date = uploadDate;
-  let caption = fakeCaption;
-  let is_hero_photo = false;
 
-  newRow = [photo_id, trail_id, user_id, upload_date, photo_url, caption, is_hero_photo];
-
-  csvStream.write(newRow);
 
   totalEntries--;
 }
