@@ -19,6 +19,7 @@ var getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+
 var insertionFactory = (trailId, trailIdPhotoNum) => {
   return new Promise ((resolve, reject) => {
 
@@ -55,6 +56,7 @@ var insertionFactory = (trailId, trailIdPhotoNum) => {
     });
   });
 };
+
 
 let iterateTrailIds = async () => {
   for (var i = 1; i <= numSampleTrails; i++) {
