@@ -2,6 +2,8 @@ const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const faker = require('faker');
 
+const startTime = new Date();
+
 const photoUrlArray = [];
 
 const getFakerPhotos = () => {
@@ -25,7 +27,7 @@ const csvTrailPhotos = createCsvWriter({
   ]
 });
 
-let totalEntries = 10;
+let totalEntries = 10000000;
 
 // Stores 1000 records to be written to CSV file
 const records = [];
@@ -68,12 +70,16 @@ const fillArray = async() => {
     totalEntries--;
   }
 
-  return 'Completed writing to CSV File';
+  let endTime = new Date();
+
+  let completionTime = Math.abs(startTime - endTime);
+
+  return completionTime;
 };
 
 
 fillArray()
   .then((result) =>{
-    console.log(result);
+    console.log(`Completed Writing to CSV in ${result / 1000 / 60} minutes`);
   });
 
