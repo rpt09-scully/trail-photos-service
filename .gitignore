@@ -24,3 +24,14 @@ coverage
 build/
 dist/
 
+#SECRETS
+.env
+.actual.env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+#CSV Data File
+database-postgresql/trailphotos.csv

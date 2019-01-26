@@ -1,17 +1,65 @@
 {
-  "name": "",
+  "name": "trail-photos",
   "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "description": "gimmeTrailIdIGivethYouPhotoz",
+  "author": "Meng Sung",
+  "license": "gimmeAllzDaRoyaltiez",
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-extended",
+    "modulePathIgnorePatterns": [
+      "helpers"
+    ]
+  },
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "build-deploy": "kill $(lsof -t -i:3003); npm run lint && webpack -p && git add . && git commit; eb deploy",
+    "start": "node server/index.js",
+    "react-dev": "webpack -d --watch",
+    "start-dev": "nodemon server/index.js & npm run react-dev",
+    "test": "jest --verbose",
+    "testUpdate": "npm test -- --updateSnapshot",
+    "lint": "eslint $PWD --ext .js,.jsx --fix; exit 0",
+    "loadData": "psql trailPhotosDB < database-postgresql/schema.sql",
+    "seedData": "sed -i '' '16,$ d' database-postgresql/schema.sql; node database-postgresql/seed.js; npm run loadData",
+    "powerLoad": "psql trailPhotosDB < database-postgresql/powerschema.sql",
+    "powerSeed": "node database-postgresql/powerseed.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "csv-writer": "^1.2.0",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "fast-csv": "^2.4.1",
+    "i": "^0.3.6",
+    "jquery": "^3.3.1",
+    "moment": "^2.23.0",
+    "node-fetch": "^2.3.0",
+    "npm": "^6.5.0",
+    "pg": "^7.6.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "request": "^2.88.0",
+    "unsplash-js": "^4.8.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "ajv": "^6.5.5",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^23.6.0",
+    "jest-extended": "^0.11.0",
+    "nodemon": "^1.18.9",
+    "requestretry": "^3.1.0",
+    "style-loader": "^0.23.1",
+    "supertest": "^3.3.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1"
   }
 }
