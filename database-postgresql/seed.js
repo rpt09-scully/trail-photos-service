@@ -9,7 +9,7 @@ const fs = require('fs');
 // not every user has a photo
 
 // enter number of mock trails and maximum number of photos per trail below
-var numSampleTrails = 100;
+var numSampleTrails = 20;
 var maxNumPhotosPerTrail = 50;
 var minNumPhotosPerTrail = 30;
 
@@ -18,6 +18,7 @@ var minNumPhotosPerTrail = 30;
 var getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
 
 var insertionFactory = (trailId, trailIdPhotoNum) => {
   return new Promise ((resolve, reject) => {
@@ -55,6 +56,7 @@ var insertionFactory = (trailId, trailIdPhotoNum) => {
     });
   });
 };
+
 
 let iterateTrailIds = async () => {
   for (var i = 1; i <= numSampleTrails; i++) {
