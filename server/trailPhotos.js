@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const db = require('../database-postgresql/helpers');
 
+
 router.get('/photos', (req, res, next) => {
   var sortOrder = req.query.sort || null;
   var validSortOrder = ['asc', 'desc', null];
