@@ -1,8 +1,10 @@
 let getTrailIdURL = () => {
   let urlId = window.location.pathname.slice(1);
   if (urlId.length === 0 || isNaN(Number(urlId))) {
+    console.log('default behave')
     return 1;
   } else {
+    console.log('URLID:', urlId);
     return urlId;
   }
 };

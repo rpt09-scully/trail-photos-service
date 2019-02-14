@@ -45,6 +45,7 @@ class App extends React.Component {
     this.setState({currentSortType: sortTypeList[0]}, () => {
 
       let photosEndpoint = this.state.environment.photos + `/${this.state.currentTrailId}/photos`;
+      console.log(photosEndpoint);
       if (this.state.currentSortType === 'newSort') {
         photosEndpoint += '?sort=desc';
       } else if (this.state.currentSortType === 'oldSort') {
