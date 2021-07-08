@@ -1,0 +1,15 @@
+{
+  "data": {
+    "type": "trail-photos",
+    "id": "3",
+    "attributes": {
+      "photo_url": "http://aws.amazon.com/sdfsdfwe23fdgr.png",
+      "thumb_photo_url": "http://aws.amazon.com/sdfsdfdwe23fdgr.png",
+      "trail_id": "5",
+      "user_id": "33",
+      "upload_date": 	"2018-09-23T22:58:42.900Z",
+      "caption": "Buffalo in Golden Gate Park",
+      "is_hero_photo": "true"
+    }
+  }
+}

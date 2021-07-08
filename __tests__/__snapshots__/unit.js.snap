@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Database Tests Database Seed Tests PostgreSQL database has appropriate columns PostgreSQL database has appropriate column headers 1`] = `
+Array [
+  "photo_id",
+  "trail_id",
+  "user_id",
+  "upload_date",
+  "photo_url",
+  "caption",
+  "is_hero_photo",
+]
+`;

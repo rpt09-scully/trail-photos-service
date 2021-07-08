@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "trail-photos-count",
+    "attributes": {
+      "trail_id": "5",
+      "count": "10"
+    }
+  }
+}

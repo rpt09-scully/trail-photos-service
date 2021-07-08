@@ -1,0 +1,30 @@
+.container {
+  /* border-style: solid;
+  border-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #414141;
+}
+
+.sortBarContainer {
+  margin: 10px;
+}
+
+
+h2 {
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.sortText {
+  color: #4bafe1;
+}
+
+.sortText, .sortTextClicked {
+  cursor: pointer;
+}
+.sortTextClicked {
+  color: #4f4c3e;
+}
